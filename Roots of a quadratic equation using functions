@@ -1,0 +1,101 @@
+# Finding roots of a given quadratic equation of the form ax^2+bx+c = 0 and their nature
+from math import sqrt
+import matplotlib.pyplot as plt
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset = True)
+
+print("A quadratic equation is a polynomial equation of degree 2.\nThe standard form of a quadratic equation is\nax²+bx+c = 0,\nwhere a,b and c are all real numbers and a≠0.")
+print("If we replace 0 with y,\nthen we get a quadratic function y=ax²+bx+c whose graph will be a \n'parabola'")
+print("")
+print("Coming to your problem,")
+def roots(x, y, z): #Creating a function
+
+    discriminant = pow(b, 2) - 4 * a * c  # Finding discriminant
+
+    print(f"{Fore.YELLOW}The discriminant is", discriminant)
+    print("")
+    try:
+        root_1 = (-b + sqrt(discriminant)) / (2 * a)  # Using quadratic formula for finding 1st root
+        root_2 = (-b - sqrt(discriminant)) / (2 * a)  # Using quadratic formula for finding 2nd root
+        print(f"{Fore.LIGHTYELLOW_EX}The 'roots' or 'solutions' of the given quadratic equation are : ", root_1, "and",
+              root_2)  # Print values of Roots
+    except:
+        ValueError
+        print("Could not find the roots of equation as they are unreal and complex")
+        if (a and b and c) > 0:
+            quit()
+    if discriminant > 0:
+        print(f"{Fore.LIGHTBLUE_EX}The roots are real")
+    elif discriminant == 0:
+        print(f"{Fore.LIGHTBLUE_EX}The roots are real and equal")
+    if discriminant < 0:
+        print(f"{Fore.LIGHTBLUE_EX}The roots are imaginary")
+
+a = float(input("Enter the value of a : ")) # Taking input value of x ^ 2 coefficent
+
+b = float(input("Enter the value of b : ")) # Taking input value of x coefficent
+
+c = float(input("Enter the value of c : ")) # Taking input value of constant
+
+print("")
+print(f"{Fore.CYAN}Your quadratic equation is :", a,"x² +", '(',b,')',"x +", c)
+print("")
+
+roots(a, b, c) # Calling the function
+print("")
+print(f"{Fore.LIGHTMAGENTA_EX}The sum of roots is :", -b/a) # Sum of roots
+print("")
+print(f"{Fore.LIGHTGREEN_EX}The product of roots is :", c/a) # Product of roots
+print("")
+print(f"{Fore.LIGHTRED_EX}Concept : The roots of the equation are called as X-intercepts of the 'quadratic equation'")
+print("")
+print(f"{Fore.LIGHTWHITE_EX}->The graph of the quadratic equation is a 'parabola'.\n-> Since the x - coordinate of the vertex of a parabola is exactly the midpoint of the X - intercepts,\nthe x -coordinate of the vertex is midpoint of the X-intercepts")
+print("")
+print(f"{Fore.LIGHTCYAN_EX}Enter the values you are asked for to get the graph of the equation!!")
+print(".\n.\n.\n.")
+p = float(input("Enter the value of first root :"))
+print("")
+q = float(input("Enter the value of second root :"))
+z = (p + q) / 2
+print("")
+print("The midppoint of the x-coordinates(abcissa) is :", z)
+print("")
+print("Now, we have the abcissa(x - coordinate) :", z)
+print("")
+print("To find ordinate(y - coordinate) we substitute value of abisssa", z, "in our 'quadratic equation'")
+print("")
+y = a * pow(z, 2) + (b) * z + c
+print("The ordinate is :", y)
+print("")
+print("To plot the graphs we use both 'x - coordinates' and the 'mid-point!'\n->Let the points be A, B and C")
+discriminant = pow(b, 2) - 4 * a * c
+
+root_1 = (-b + sqrt(discriminant)) / (2 * a) # Using quadratic formula for finding 1st root
+
+root_2 = (-b - sqrt(discriminant)) / (2 * a) # Using quadratic formula for finding 2nd root
+
+A = [root_1, 0]
+B = [root_2, 0]
+C = [z, y]
+print("The points are :", A, ",", B, ",", "and", C)
+print("")
+def plot_quadratic_eq(a, b, c):
+    x = list(range(-10, 11))
+    y = [(a * pow(i, 2) + b * i + c) for i in x]
+    plt.plot(x, y)
+
+
+D = float(input("Enter the value of a : ")) # Taking input value of x ^ 2 coefficent
+
+E = float(input("Enter the value of b : ")) # Taking input value of x coefficent
+
+F = float(input("Enter the value of c : ")) # Taking input value of constant
+plot_quadratic_eq(D, E, F)
+
+plt.xlim(-15, 15) # Settiing X-Axis limits
+plt.ylim(-15, 15) # Setting Y- Axis limits
+plt.grid(True) # To Show grid lines on the graph
+plt.show() #Shows graph
+plt.pause(5)
+plt.close()
