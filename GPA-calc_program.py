@@ -26,4 +26,4 @@ while i < len(grade_points):
     i += 1
 print(sum_grade_points)
 gpa = sum_grade_points/sum_of_credits
-print(gpa)
+print("Your GPA for the current subject is : ", gpa)
